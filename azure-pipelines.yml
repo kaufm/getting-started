@@ -20,7 +20,12 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud_kaufm'
+    scannerMode: 'MSBuild'
+    projectKey: 'mka-getting-started-202010022'
+    projectName: 'Getting Started'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -36,3 +41,8 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     codeCoverageEnabled: true
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+    
