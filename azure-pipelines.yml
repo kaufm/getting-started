@@ -23,6 +23,7 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud_kaufm'
+    organization: 'kaufm'
     scannerMode: 'MSBuild'
     projectKey: 'mka-getting-started-202010022'
     projectName: 'Getting Started'
